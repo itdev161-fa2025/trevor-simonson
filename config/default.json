@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://simonsot:simonsot123@atlascluster.atebf.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
+    "mongoURI": "mongodb+srv://simonsot:simonsot123@atlascluster.atebf.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster",
+    "jwtSecret": "anything"
 }
