@@ -7,7 +7,6 @@ const connectDatabase = async () =>{
     try{
         await mongoose.connect(db, {
             useUnifiedTopology: true,
-            useCreateIndex: true
         });
         console.log('Connnected to MongoDB');
 
