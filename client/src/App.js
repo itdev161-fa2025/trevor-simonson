@@ -2,6 +2,7 @@
 import React from 'react'
 import axios from 'axios'
 import './App.css';
+import { Routes, Route, Link } from 'react-router-dom'
 
 class App extends React.Component {
   state = {
@@ -23,9 +24,20 @@ class App extends React.Component {
     return(
       <div className="App">
         <header className="App-header">
-          GoodThings
+          <h1>Good Things</h1>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/register'>Register</Link></li>
+            <li><Link to='/login'>Login</Link></li>
+          </ul>
         </header>
-        {this.state.data}
+        <main>
+          <Routes>
+            <Route path="/" />
+            <Route path="/register" />
+            <Route path="/login" />
+          </Routes>
+        </main>
       </div>
     )
   }
