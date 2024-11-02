@@ -55,7 +55,18 @@ class App extends React.Component {
     }
   }
 
+  logOut= ()=>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({user: null, token: null});
+  }
+
   render(){
+    let {user, data} = this.state;
+
+    const authProps = {
+      authenticateUser: this.authenticateUser
+    }
     return(
       <div className="App">
         <header className="App-header">
@@ -63,14 +74,17 @@ class App extends React.Component {
           <ul>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/register'>Register</Link></li>
-            <li><Link to='/login'>Login</Link></li>
+            {user ?
+            <li><Link to='/' onCLick={this.LogOut}>Log out</Link></li> :
+            <li><Link to='/login'>Login</Link></li> 
+            }
           </ul>
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/" element={<Home user={user} data={data} />} />
+            <Route path="/register" element={<Register {...authProps} />} />
+            <Route path="/login" element={<Login {...authProps} />} />
           </Routes>
         </main>
       </div>
